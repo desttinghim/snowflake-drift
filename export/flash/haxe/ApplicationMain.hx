@@ -31,7 +31,35 @@ class ApplicationMain {
 		types.push (AssetType.TEXT);
 		
 		
+		urls.push ("assets/images/background.svg");
+		types.push (AssetType.TEXT);
+		
+		
+		urls.push ("assets/images/backgroundhills.png");
+		types.push (AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/backgroundhills.svg");
+		types.push (AssetType.TEXT);
+		
+		
+		urls.push ("assets/images/icicle.png");
+		types.push (AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/icicle.svg");
+		types.push (AssetType.TEXT);
+		
+		
 		urls.push ("assets/images/images-go-here.txt");
+		types.push (AssetType.TEXT);
+		
+		
+		urls.push ("assets/images/snowflake.png");
+		types.push (AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/snowflake.svg");
 		types.push (AssetType.TEXT);
 		
 		
@@ -98,7 +126,7 @@ class ApplicationMain {
 		config = {
 			
 			antialiasing: Std.int (0),
-			background: Std.int (0),
+			background: Std.int (14024694),
 			borderless: false,
 			depthBuffer: false,
 			fps: Std.int (60),
@@ -115,7 +143,7 @@ class ApplicationMain {
 		
 		#if js
 		#if munit
-		flash.Lib.embed (null, 320, 480, "000000");
+		flash.Lib.embed (null, 320, 480, "D5FFF6");
 		#end
 		#else
 		create ();
