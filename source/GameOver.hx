@@ -1,5 +1,6 @@
 package ;
 
+import flixel.addons.display.FlxBackdrop;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxState;
@@ -17,6 +18,7 @@ import flixel.util.FlxMath;
 class GameOver extends FlxState
 {
 	private var gameOverText:FlxText;
+	private var instructText:FlxText;
 	private var score:Int;
 	private var loaded:Int;
 	/**
@@ -31,11 +33,27 @@ class GameOver extends FlxState
 	override public function create():Void
 	{
 		super.create();
+		
+		var background = new FlxBackdrop(AssetPaths.backgroundhills__png, 0.8, 0, true, false);
+		background.velocity.x = -15;
+		add(background);
+		
+		var background2 = new FlxBackdrop(AssetPaths.ground__png, 0.8, 0, true, false);
+		background2.y = FlxG.height - 32;
+		background2.velocity.x = -100;
+		add(background2);
+		
+		
 		gameOverText = new FlxText();
-		gameOverText.alignment = "center";
-		gameOverText.text = "SCORE: " + score + "\nGAME OVER. \n TAP TO PLAY AGAIN";
-		gameOverText.size = 24;
+		gameOverText.setFormat(AssetPaths.visitor1__ttf, 24, FlxColor.WHITE, "center");
+		gameOverText.text = "SCORE: " + score + "\nGAME OVER";
 		add(gameOverText);
+		
+		instructText = new FlxText();
+		instructText.setFormat(AssetPaths.visitor1__ttf, 16, FlxColor.WHITE, "center");
+		instructText.text = "TAP TO RESTART";
+		add(instructText);
+		
 		loaded = 1;
 	}
 	
@@ -54,10 +72,11 @@ class GameOver extends FlxState
 	override public function update():Void
 	{
 		if (loaded == 0) {
-			loaded--;
 			gameOverText.x = FlxG.width / 2 - gameOverText.width / 2;
-			gameOverText.y = FlxG.height / 2 - gameOverText.height / 2;
+			gameOverText.y = FlxG.height / 3 - gameOverText.height / 2;
 			
+			instructText.x = FlxG.width / 2 - instructText.width / 2;
+			instructText.y = FlxG.height / 2 - instructText.height / 2;
 		} else if (loaded > 0) {
 			loaded--;
 		}

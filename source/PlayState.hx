@@ -22,7 +22,8 @@ class PlayState extends FlxState
 	private var snowflake:FlxSprite;
 	private var snowflakeRotationSpeed:Float;
 	
-	private var icicles:FlxSpriteGroup;
+	private var icicles:Icicles;
+	private var icicles2:Icicles;
 	
 	private var score:Int;
 	private var scoreText:FlxText;
@@ -55,26 +56,13 @@ class PlayState extends FlxState
 		add(snowflake);
 		
 		//Create icicles
-		var rand = Math.round(Math.random() * 2);
-		var topIce:FlxSprite = new FlxSprite(0, 0);
-		var bottomIce:FlxSprite = new FlxSprite(0, FlxG.height);
-		
-		topIce.loadGraphic(AssetPaths.icicle__png);
-		topIce.height -= 32;
-		topIce.width -= 32;
-		topIce.centerOffsets();
-		
-		bottomIce.loadGraphic(AssetPaths.icicle__png);
-		bottomIce.flipY = true;
-		bottomIce.height -= 32;
-		bottomIce.width -= 32;
-		bottomIce.centerOffsets();
-		
-		icicles = new FlxSpriteGroup(FlxG.width, rand == 0 ? -240 : (rand == 1 ? -160 : -80));
-		icicles.velocity.x = -100;
-		icicles.add(topIce);
-		icicles.add(bottomIce);
+		var rand = Math.round(Math.random() * 160);
+		icicles = new Icicles(FlxG.width, -80 - rand);
 		add(icicles);
+		
+		rand = Math.round(Math.random() * 160);
+		icicles2 = new Icicles(FlxG.width + FlxG.width / 2 + 32, -80 - rand);
+		add(icicles2);
 		
 		var ground = new FlxBackdrop(AssetPaths.ground__png, 0, 0, true, false);
 		ground.y = FlxG.height - 32;
@@ -84,6 +72,7 @@ class PlayState extends FlxState
 		//Create score text
 		score = 0;
 		scoreText = new FlxText(8, 8, -1);
+		scoreText.setFormat(AssetPaths.visitor1__ttf, 16, FlxColor.WHITE, "center");
 		scoreText.text = "Score: " + score;
 		add(scoreText);
 	
@@ -106,20 +95,17 @@ class PlayState extends FlxState
 	{
 		super.update();
 		if (FlxG.keys.justPressed.SPACE || FlxG.mouse.justPressed) {
-			snowflake.velocity.y = -300;
+			snowflake.velocity.y = -350;
 		}
-		if (icicles.x < snowflake.x && scoreUpdate) {
+		if (icicles.x < snowflake.x && icicles.canAddScore()) {
 			score+=1;
 			scoreText.text = "Score: " + score;
-			scoreUpdate = false;
 		}
-		if (icicles.x < -icicles.width) {
-			icicles.x = FlxG.width;
-			var rand = Math.round(Math.random() * 160);
-			icicles.y = -80-rand;
-			scoreUpdate = true;
+		if (icicles2.x < snowflake.x && icicles2.canAddScore()) {
+			score+=1;
+			scoreText.text = "Score: " + score;
 		}
-		if (snowflake.y > FlxG.height-32 || snowflake.y < -32 || FlxG.overlap(snowflake,icicles)) {
+		if (snowflake.y > FlxG.height-32 || snowflake.y < -32 || FlxG.overlap(snowflake,icicles) || FlxG.overlap(snowflake,icicles2)) {
 			gameOver();
 		}
 		snowflakeRotationSpeed = snowflake.velocity.y / 50;

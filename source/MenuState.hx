@@ -6,6 +6,7 @@ import flixel.FlxSprite;
 import flixel.FlxState;
 import flixel.text.FlxText;
 import flixel.ui.FlxButton;
+import flixel.util.FlxColor;
 import flixel.util.FlxMath;
 
 /**
@@ -15,6 +16,7 @@ class MenuState extends FlxState
 {
 	private var loaded:Int;
 	private var titleText:FlxText;
+	private var instructText:FlxText;
 	/**
 	 * Function that is called up when to state is created to set it up. 
 	 */
@@ -32,11 +34,14 @@ class MenuState extends FlxState
 		add(background2);
 		
 		titleText = new FlxText();
-		titleText.alignment = "center";
+		titleText.setFormat(AssetPaths.visitor1__ttf, 24, FlxColor.WHITE, "center");
 		titleText.text = "SNOWFLAKE DRIFT";
-		titleText.size = 24;
-		titleText.angle = 15;
 		add(titleText);
+		
+		instructText = new FlxText();
+		instructText.setFormat(AssetPaths.visitor1__ttf, 16, FlxColor.WHITE, "center");
+		instructText.text = "TAP TO BEGIN";
+		add(instructText);
 		
 		loaded = 1;
 		
@@ -61,6 +66,9 @@ class MenuState extends FlxState
 			loaded--;
 			titleText.x = FlxG.width / 2 - titleText.width / 2;
 			titleText.y = FlxG.height / 3 - titleText.height / 2;
+			
+			instructText.x = FlxG.width / 2 - instructText.width / 2;
+			instructText.y = FlxG.height / 2 - instructText.height / 2;
 		} else if(loaded > 0){
 			loaded--;
 		}
