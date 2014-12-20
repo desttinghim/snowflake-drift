@@ -52,6 +52,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("assets/images/backgroundhills.png", AssetType.IMAGE);
 		className.set ("assets/images/backgroundhills.svg", __ASSET__assets_images_backgroundhills_svg);
 		type.set ("assets/images/backgroundhills.svg", AssetType.TEXT);
+		className.set ("assets/images/ground.png", __ASSET__assets_images_ground_png);
+		type.set ("assets/images/ground.png", AssetType.IMAGE);
+		className.set ("assets/images/ground.svg", __ASSET__assets_images_ground_svg);
+		type.set ("assets/images/ground.svg", AssetType.TEXT);
 		className.set ("assets/images/icicle.png", __ASSET__assets_images_icicle_png);
 		type.set ("assets/images/icicle.png", AssetType.IMAGE);
 		className.set ("assets/images/icicle.svg", __ASSET__assets_images_icicle_svg);
@@ -88,6 +92,14 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		type.set (id, AssetType.IMAGE);
 		id = "assets/images/backgroundhills.svg";
+		path.set (id, id);
+		
+		type.set (id, AssetType.TEXT);
+		id = "assets/images/ground.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "assets/images/ground.svg";
 		path.set (id, id);
 		
 		type.set (id, AssetType.TEXT);
@@ -147,6 +159,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
+		
 		#end
 		
 		#if (windows || mac || linux)
@@ -164,6 +178,12 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		className.set ("assets/images/backgroundhills.svg", __ASSET__assets_images_backgroundhills_svg);
 		type.set ("assets/images/backgroundhills.svg", AssetType.TEXT);
+		
+		className.set ("assets/images/ground.png", __ASSET__assets_images_ground_png);
+		type.set ("assets/images/ground.png", AssetType.IMAGE);
+		
+		className.set ("assets/images/ground.svg", __ASSET__assets_images_ground_svg);
+		type.set ("assets/images/ground.svg", AssetType.TEXT);
 		
 		className.set ("assets/images/icicle.png", __ASSET__assets_images_icicle_png);
 		type.set ("assets/images/icicle.png", AssetType.IMAGE);
@@ -767,6 +787,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 @:keep @:bind #if display private #end class __ASSET__assets_images_background_svg extends flash.utils.ByteArray { }
 @:keep @:bind #if display private #end class __ASSET__assets_images_backgroundhills_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_backgroundhills_svg extends flash.utils.ByteArray { }
+@:keep @:bind #if display private #end class __ASSET__assets_images_ground_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_images_ground_svg extends flash.utils.ByteArray { }
 @:keep @:bind #if display private #end class __ASSET__assets_images_icicle_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_icicle_svg extends flash.utils.ByteArray { }
 @:keep @:bind #if display private #end class __ASSET__assets_images_images_go_here_txt extends flash.utils.ByteArray { }
@@ -781,6 +803,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 #elseif html5
 
 #if openfl
+
+
 
 
 
@@ -810,6 +834,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 //@:file("assets/images/background.svg") class __ASSET__assets_images_background_svg extends lime.utils.ByteArray {}
 //@:bitmap("assets/images/backgroundhills.png") class __ASSET__assets_images_backgroundhills_png extends openfl.display.BitmapData {}
 //@:file("assets/images/backgroundhills.svg") class __ASSET__assets_images_backgroundhills_svg extends lime.utils.ByteArray {}
+//@:bitmap("assets/images/ground.png") class __ASSET__assets_images_ground_png extends openfl.display.BitmapData {}
+//@:file("assets/images/ground.svg") class __ASSET__assets_images_ground_svg extends lime.utils.ByteArray {}
 //@:bitmap("assets/images/icicle.png") class __ASSET__assets_images_icicle_png extends openfl.display.BitmapData {}
 //@:file("assets/images/icicle.svg") class __ASSET__assets_images_icicle_svg extends lime.utils.ByteArray {}
 //@:file("assets/images/images-go-here.txt") class __ASSET__assets_images_images_go_here_txt extends lime.utils.ByteArray {}

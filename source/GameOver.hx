@@ -18,6 +18,7 @@ class GameOver extends FlxState
 {
 	private var gameOverText:FlxText;
 	private var score:Int;
+	private var loaded:Int;
 	/**
 	 * Function that is called up when to state is created to set it up. 
 	 */
@@ -35,6 +36,7 @@ class GameOver extends FlxState
 		gameOverText.text = "SCORE: " + score + "\nGAME OVER. \n TAP TO PLAY AGAIN";
 		gameOverText.size = 24;
 		add(gameOverText);
+		loaded = 1;
 	}
 	
 	/**
@@ -51,9 +53,15 @@ class GameOver extends FlxState
 	 */
 	override public function update():Void
 	{
+		if (loaded == 0) {
+			loaded--;
+			gameOverText.x = FlxG.width / 2 - gameOverText.width / 2;
+			gameOverText.y = FlxG.height / 2 - gameOverText.height / 2;
+			
+		} else if (loaded > 0) {
+			loaded--;
+		}
 		super.update();
-		gameOverText.x = FlxG.width / 2 - gameOverText.width / 2;
-		gameOverText.y = FlxG.height / 2 - gameOverText.height / 2;
 		if (FlxG.mouse.justPressed) {
 			FlxG.switchState(new PlayState());
 		}

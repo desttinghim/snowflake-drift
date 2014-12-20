@@ -34,11 +34,12 @@ class PlayState extends FlxState
 	{
 		super.create();
 		//Create background
+		/*
 		var backgroundcolor:FlxSprite = new FlxSprite(0, 0);
 		backgroundcolor.makeGraphic(FlxG.width, FlxG.height, FlxColorUtil.makeFromARGB(0xff, 0x5d, 0xd3, 0xff), false);
 		add(backgroundcolor);
-		
-		background = new FlxBackdrop(AssetPaths.backgroundhills__png, 0.8, 0, true, false);
+		*/
+		background = new FlxBackdrop(AssetPaths.backgroundhills__png, 0, 0, true, false);
 		background.velocity.x = -15;
 		add(background);
 		
@@ -114,11 +115,11 @@ class PlayState extends FlxState
 		}
 		if (icicles.x < -icicles.width) {
 			icicles.x = FlxG.width;
-			var rand = Math.round(Math.random() * 2);
-			icicles.y = rand == 0 ? -240 : (rand == 1 ? -160 : -80);
+			var rand = Math.round(Math.random() * 160);
+			icicles.y = -80-rand;
 			scoreUpdate = true;
 		}
-		if (snowflake.y > FlxG.height || snowflake.y < -32 || FlxG.overlap(snowflake,icicles)) {
+		if (snowflake.y > FlxG.height-32 || snowflake.y < -32 || FlxG.overlap(snowflake,icicles)) {
 			gameOver();
 		}
 		snowflakeRotationSpeed = snowflake.velocity.y / 50;

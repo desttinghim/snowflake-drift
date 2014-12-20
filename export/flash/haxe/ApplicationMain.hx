@@ -43,6 +43,14 @@ class ApplicationMain {
 		types.push (AssetType.TEXT);
 		
 		
+		urls.push ("assets/images/ground.png");
+		types.push (AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/ground.svg");
+		types.push (AssetType.TEXT);
+		
+		
 		urls.push ("assets/images/icicle.png");
 		types.push (AssetType.IMAGE);
 		
