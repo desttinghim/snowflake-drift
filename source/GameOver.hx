@@ -1,6 +1,7 @@
 package ;
 
 import flixel.addons.display.FlxBackdrop;
+import flixel.effects.particles.FlxEmitter;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxState;
@@ -21,6 +22,9 @@ class GameOver extends FlxState
 	private var instructText:FlxText;
 	private var score:Int;
 	private var loaded:Int;
+	
+	private var snowEmitter:FlxEmitter;
+	private var particles_count:Int = 200;
 	/**
 	 * Function that is called up when to state is created to set it up. 
 	 */
@@ -53,6 +57,21 @@ class GameOver extends FlxState
 		instructText.setFormat(AssetPaths.visitor1__ttf, 16, FlxColor.WHITE, "center");
 		instructText.text = "TAP TO RESTART";
 		add(instructText);
+		
+		snowEmitter = new FlxEmitter(0, 0);
+		snowEmitter.setSize(FlxG.width, 0);
+		add(snowEmitter);
+		
+		snowEmitter.setXSpeed(-5, 5);
+		snowEmitter.setYSpeed(60, 70);
+		snowEmitter.setRotation(0, 0);
+		
+		for (i in 0 ... particles_count * 2) {
+			var particle:SnowParticle = new SnowParticle();
+			snowEmitter.add(particle);
+		}
+		
+		snowEmitter.start(false, 10, .1);
 		
 		loaded = 1;
 	}

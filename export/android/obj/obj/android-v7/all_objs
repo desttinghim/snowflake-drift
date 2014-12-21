@@ -230,7 +230,6 @@ obj/android-v7/57e677d6_FlxBGSprite.obj
 obj/android-v7/57e677d6_FlxAssets.obj
 obj/android-v7/57e677d6_GraphicLogo.obj
 obj/android-v7/446418c3_FontDefault.obj
-obj/android-v7/906212b1_Font.obj
 obj/android-v7/86c83690_IFlxSignal.obj
 obj/android-v7/e892afcf_FlxTouchManager.obj
 obj/android-v7/e892afcf_FlxTouch.obj
@@ -248,8 +247,6 @@ obj/android-v7/86c83690_IFlxInput.obj
 obj/android-v7/fdd0c02b_FlxSwipe.obj
 obj/android-v7/fdd0c02b_FlxAccelerometer.obj
 obj/android-v7/3a9a4348_FlxTypedGroupIterator.obj
-obj/android-v7/3a9a4348_FlxSpriteGroup.obj
-obj/android-v7/3a9a4348_FlxTypedSpriteGroup.obj
 obj/android-v7/c9fd1fa8_FlxFlicker.obj
 obj/android-v7/c77d3200_FlxPool_flixel_effects_FlxFlicker.obj
 obj/android-v7/579efa51_FlxPrerotatedAnimation.obj
@@ -258,14 +255,10 @@ obj/android-v7/579efa51_FlxAnimation.obj
 obj/android-v7/579efa51_FlxBaseAnimation.obj
 obj/android-v7/c2824382_FlxBackdrop.obj
 obj/android-v7/d2937073_FlxSubState.obj
-obj/android-v7/d2937073_FlxSprite.obj
 obj/android-v7/8ddce483_GraphicDefault.obj
 obj/android-v7/4fb44b1b_BitmapData.obj
-obj/android-v7/d2937073_FlxObject.obj
 obj/android-v7/d2937073_FlxGame.obj
 obj/android-v7/d2937073_FlxG.obj
-obj/android-v7/c77d3200_FlxRect.obj
-obj/android-v7/c77d3200_FlxPool_flixel_util_FlxRect.obj
 obj/android-v7/113e0135_WatchFrontEnd.obj
 obj/android-v7/113e0135_VCRFrontEnd.obj
 obj/android-v7/113e0135_SoundFrontEnd.obj
@@ -293,7 +286,6 @@ obj/android-v7/2810a5a8_RatioScaleMode.obj
 obj/android-v7/2810a5a8_BaseScaleMode.obj
 obj/android-v7/c77d3200_FlxPoint.obj
 obj/android-v7/c77d3200_FlxPool_flixel_util_FlxPoint.obj
-obj/android-v7/86c83690_IFlxPooled.obj
 obj/android-v7/57e677d6_FlxVersion.obj
 obj/android-v7/d2937073_FlxCamera.obj
 obj/android-v7/81382b3c_Thread.obj
@@ -311,6 +303,14 @@ obj/android-v7/82b53a69_MenuState.obj
 obj/android-v7/82b53a69_IMap.obj
 obj/android-v7/82b53a69_List.obj
 obj/android-v7/82b53a69_Lambda.obj
+obj/android-v7/82b53a69_Icicles.obj
+obj/android-v7/3a9a4348_FlxSpriteGroup.obj
+obj/android-v7/3a9a4348_FlxTypedSpriteGroup.obj
+obj/android-v7/d2937073_FlxSprite.obj
+obj/android-v7/d2937073_FlxObject.obj
+obj/android-v7/c77d3200_FlxRect.obj
+obj/android-v7/c77d3200_FlxPool_flixel_util_FlxRect.obj
+obj/android-v7/86c83690_IFlxPooled.obj
 obj/android-v7/82b53a69_GameOver.obj
 obj/android-v7/d2937073_FlxState.obj
 obj/android-v7/3a9a4348_FlxGroup.obj
@@ -318,6 +318,9 @@ obj/android-v7/3a9a4348_FlxTypedGroup.obj
 obj/android-v7/d2937073_FlxBasic.obj
 obj/android-v7/86c83690_IFlxDestroyable.obj
 obj/android-v7/82b53a69_EReg.obj
+obj/android-v7/82b53a69___ASSET__assets_images_visitor1_ttf.obj
+obj/android-v7/82b53a69___ASSET__assets_images_fipps_regular_otf.obj
+obj/android-v7/906212b1_Font.obj
 obj/android-v7/82b53a69_DefaultAssetLibrary.obj
 obj/android-v7/359c154b_AssetLibrary.obj
 obj/android-v7/82b53a69_Date.obj

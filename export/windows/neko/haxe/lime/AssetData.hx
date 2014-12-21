@@ -44,6 +44,14 @@ class AssetData {
 			type.set ("assets/images/visitor1.ttf", Reflect.field (AssetType, "font".toUpperCase ()));
 			path.set ("assets/music/music-goes-here.txt", "assets/music/music-goes-here.txt");
 			type.set ("assets/music/music-goes-here.txt", Reflect.field (AssetType, "text".toUpperCase ()));
+			path.set ("assets/sounds/crashsound.mp3", "assets/sounds/crashsound.mp3");
+			type.set ("assets/sounds/crashsound.mp3", Reflect.field (AssetType, "music".toUpperCase ()));
+			path.set ("assets/sounds/crashsound.wav", "assets/sounds/crashsound.wav");
+			type.set ("assets/sounds/crashsound.wav", Reflect.field (AssetType, "sound".toUpperCase ()));
+			path.set ("assets/sounds/floatsound.mp3", "assets/sounds/floatsound.mp3");
+			type.set ("assets/sounds/floatsound.mp3", Reflect.field (AssetType, "music".toUpperCase ()));
+			path.set ("assets/sounds/floatsound.wav", "assets/sounds/floatsound.wav");
+			type.set ("assets/sounds/floatsound.wav", Reflect.field (AssetType, "sound".toUpperCase ()));
 			path.set ("assets/sounds/sounds-go-here.txt", "assets/sounds/sounds-go-here.txt");
 			type.set ("assets/sounds/sounds-go-here.txt", Reflect.field (AssetType, "text".toUpperCase ()));
 			path.set ("assets/sounds/beep.ogg", "assets/sounds/beep.ogg");

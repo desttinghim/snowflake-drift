@@ -280,6 +280,9 @@ obj/android-debug-v7/13045548_IFlxInput.obj
 obj/android-debug-v7/a37f4387_FlxSwipe.obj
 obj/android-debug-v7/a37f4387_FlxAccelerometer.obj
 obj/android-debug-v7/8e46fd0a_FlxTypedGroupIterator.obj
+obj/android-debug-v7/8e908c68_Bounds.obj
+obj/android-debug-v7/8e908c68_FlxEmitter.obj
+obj/android-debug-v7/8e908c68_FlxTypedEmitter.obj
 obj/android-debug-v7/23af76ab_FlxFlicker.obj
 obj/android-debug-v7/8ba9dfa4_FlxPool_flixel_effects_FlxFlicker.obj
 obj/android-debug-v7/56d97c7f_FlxPrerotatedAnimation.obj
@@ -331,6 +334,11 @@ obj/android-debug-v7/1b394dab_Type.obj
 obj/android-debug-v7/1b394dab_ValueType.obj
 obj/android-debug-v7/1b394dab_StringTools.obj
 obj/android-debug-v7/1b394dab_StringBuf.obj
+obj/android-debug-v7/1b394dab_SnowParticle.obj
+obj/android-debug-v7/8e908c68_FlxParticle.obj
+obj/android-debug-v7/13045548_IFlxParticle.obj
+obj/android-debug-v7/13045548_IFlxSprite.obj
+obj/android-debug-v7/13045548_IFlxBasic.obj
 obj/android-debug-v7/1b394dab_Reflect.obj
 obj/android-debug-v7/1b394dab_PlayState.obj
 obj/android-debug-v7/1b394dab_MenuState.obj

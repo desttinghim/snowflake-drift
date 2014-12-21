@@ -52,6 +52,14 @@ Dynamic AssetPaths_obj::__Create(hx::DynamicArray inArgs)
 
 ::String AssetPaths_obj::music_goes_here__txt;
 
+::String AssetPaths_obj::crashsound__mp3;
+
+::String AssetPaths_obj::crashsound__wav;
+
+::String AssetPaths_obj::floatsound__mp3;
+
+::String AssetPaths_obj::floatsound__wav;
+
 ::String AssetPaths_obj::sounds_go_here__txt;
 
 
@@ -90,6 +98,10 @@ static ::String sStaticFields[] = {
 	HX_CSTRING("Thumbs__db"),
 	HX_CSTRING("visitor1__ttf"),
 	HX_CSTRING("music_goes_here__txt"),
+	HX_CSTRING("crashsound__mp3"),
+	HX_CSTRING("crashsound__wav"),
+	HX_CSTRING("floatsound__mp3"),
+	HX_CSTRING("floatsound__wav"),
 	HX_CSTRING("sounds_go_here__txt"),
 	String(null()) };
 
@@ -117,6 +129,10 @@ static void sMarkStatics(HX_MARK_PARAMS) {
 	HX_MARK_MEMBER_NAME(AssetPaths_obj::Thumbs__db,"Thumbs__db");
 	HX_MARK_MEMBER_NAME(AssetPaths_obj::visitor1__ttf,"visitor1__ttf");
 	HX_MARK_MEMBER_NAME(AssetPaths_obj::music_goes_here__txt,"music_goes_here__txt");
+	HX_MARK_MEMBER_NAME(AssetPaths_obj::crashsound__mp3,"crashsound__mp3");
+	HX_MARK_MEMBER_NAME(AssetPaths_obj::crashsound__wav,"crashsound__wav");
+	HX_MARK_MEMBER_NAME(AssetPaths_obj::floatsound__mp3,"floatsound__mp3");
+	HX_MARK_MEMBER_NAME(AssetPaths_obj::floatsound__wav,"floatsound__wav");
 	HX_MARK_MEMBER_NAME(AssetPaths_obj::sounds_go_here__txt,"sounds_go_here__txt");
 };
 
@@ -138,6 +154,10 @@ static void sVisitStatics(HX_VISIT_PARAMS) {
 	HX_VISIT_MEMBER_NAME(AssetPaths_obj::Thumbs__db,"Thumbs__db");
 	HX_VISIT_MEMBER_NAME(AssetPaths_obj::visitor1__ttf,"visitor1__ttf");
 	HX_VISIT_MEMBER_NAME(AssetPaths_obj::music_goes_here__txt,"music_goes_here__txt");
+	HX_VISIT_MEMBER_NAME(AssetPaths_obj::crashsound__mp3,"crashsound__mp3");
+	HX_VISIT_MEMBER_NAME(AssetPaths_obj::crashsound__wav,"crashsound__wav");
+	HX_VISIT_MEMBER_NAME(AssetPaths_obj::floatsound__mp3,"floatsound__mp3");
+	HX_VISIT_MEMBER_NAME(AssetPaths_obj::floatsound__wav,"floatsound__wav");
 	HX_VISIT_MEMBER_NAME(AssetPaths_obj::sounds_go_here__txt,"sounds_go_here__txt");
 };
 
@@ -176,6 +196,10 @@ void AssetPaths_obj::__boot()
 	Thumbs__db= HX_CSTRING("assets/images/Thumbs.db");
 	visitor1__ttf= HX_CSTRING("assets/images/visitor1.ttf");
 	music_goes_here__txt= HX_CSTRING("assets/music/music-goes-here.txt");
+	crashsound__mp3= HX_CSTRING("assets/sounds/crashsound.mp3");
+	crashsound__wav= HX_CSTRING("assets/sounds/crashsound.wav");
+	floatsound__mp3= HX_CSTRING("assets/sounds/floatsound.mp3");
+	floatsound__wav= HX_CSTRING("assets/sounds/floatsound.wav");
 	sounds_go_here__txt= HX_CSTRING("assets/sounds/sounds-go-here.txt");
 }
 

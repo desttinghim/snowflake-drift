@@ -13,6 +13,8 @@ HX_DECLARE_CLASS1(flixel,FlxObject)
 HX_DECLARE_CLASS1(flixel,FlxSprite)
 HX_DECLARE_CLASS1(flixel,FlxState)
 HX_DECLARE_CLASS3(flixel,addons,display,FlxBackdrop)
+HX_DECLARE_CLASS3(flixel,effects,particles,FlxEmitter)
+HX_DECLARE_CLASS3(flixel,effects,particles,FlxTypedEmitter)
 HX_DECLARE_CLASS2(flixel,group,FlxGroup)
 HX_DECLARE_CLASS2(flixel,group,FlxSpriteGroup)
 HX_DECLARE_CLASS2(flixel,group,FlxTypedGroup)
@@ -51,6 +53,8 @@ class HXCPP_CLASS_ATTRIBUTES  PlayState_obj : public ::flixel::FlxState_obj{
 		int score;
 		::flixel::text::FlxText scoreText;
 		bool scoreUpdate;
+		::flixel::effects::particles::FlxEmitter snowEmitter;
+		int particles_count;
 		virtual Void create( );
 
 		virtual Void destroy( );

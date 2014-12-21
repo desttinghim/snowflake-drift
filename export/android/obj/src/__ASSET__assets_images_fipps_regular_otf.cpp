@@ -15,13 +15,13 @@
 
 Void __ASSET__assets_images_fipps_regular_otf_obj::__construct()
 {
-HX_STACK_FRAME("__ASSET__assets_images_fipps_regular_otf","new",0xaa362926,"__ASSET__assets_images_fipps_regular_otf.new","DefaultAssetLibrary.hx",855,0x0fc48912)
+HX_STACK_FRAME("__ASSET__assets_images_fipps_regular_otf","new",0xaa362926,"__ASSET__assets_images_fipps_regular_otf.new","DefaultAssetLibrary.hx",891,0x0fc48912)
 {
-	HX_STACK_LINE(855)
+	HX_STACK_LINE(891)
 	super::__construct(null(),null(),null());
-	HX_STACK_LINE(855)
+	HX_STACK_LINE(891)
 	this->__fontPath = HX_CSTRING("assets/images/Fipps_Regular.otf");
-	HX_STACK_LINE(855)
+	HX_STACK_LINE(891)
 	this->fontName = HX_CSTRING("Fipps Regular");
 }
 ;

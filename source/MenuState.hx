@@ -1,6 +1,7 @@
 package;
 
 import flixel.addons.display.FlxBackdrop;
+import flixel.effects.particles.FlxEmitter;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxState;
@@ -17,6 +18,9 @@ class MenuState extends FlxState
 	private var loaded:Int;
 	private var titleText:FlxText;
 	private var instructText:FlxText;
+	private var ackText:FlxText;
+	private var snowEmitter:FlxEmitter;
+	private var particles_count:Int = 200;
 	/**
 	 * Function that is called up when to state is created to set it up. 
 	 */
@@ -42,6 +46,26 @@ class MenuState extends FlxState
 		instructText.setFormat(AssetPaths.visitor1__ttf, 16, FlxColor.WHITE, "center");
 		instructText.text = "TAP TO BEGIN";
 		add(instructText);
+		
+		ackText = new FlxText();
+		ackText.setFormat(AssetPaths.visitor1__ttf, 8, FlxColor.WHITE, "center");
+		ackText.text = "Sound effects from SoundBible.com";
+		add(ackText);
+		
+		snowEmitter = new FlxEmitter(0, 0);
+		snowEmitter.setSize(FlxG.width, 0);
+		add(snowEmitter);
+		
+		snowEmitter.setXSpeed(-5, 5);
+		snowEmitter.setYSpeed(60, 70);
+		snowEmitter.setRotation(0, 0);
+		
+		for (i in 0 ... particles_count * 2) {
+			var particle:SnowParticle = new SnowParticle();
+			snowEmitter.add(particle);
+		}
+		
+		snowEmitter.start(false, 10, .1);
 		
 		loaded = 1;
 		
@@ -69,6 +93,9 @@ class MenuState extends FlxState
 			
 			instructText.x = FlxG.width / 2 - instructText.width / 2;
 			instructText.y = FlxG.height / 2 - instructText.height / 2;
+			
+			ackText.x = FlxG.width / 2 - ackText.width / 2;
+			ackText.y = FlxG.height - ackText.height - 32;
 		} else if(loaded > 0){
 			loaded--;
 		}

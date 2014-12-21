@@ -2954,6 +2954,39 @@
   <file name="src/flixel/group/FlxTypedGroupIterator.cpp">
    <depend name="include/flixel/group/FlxTypedGroupIterator.h"/>
   </file>
+  <file name="src/flixel/effects/particles/Bounds.cpp">
+   <depend name="include/flixel/effects/particles/Bounds.h"/>
+  </file>
+  <file name="src/flixel/effects/particles/FlxEmitter.cpp">
+   <depend name="include/flixel/FlxBasic.h"/>
+   <depend name="include/flixel/effects/particles/FlxEmitter.h"/>
+   <depend name="include/flixel/effects/particles/FlxTypedEmitter.h"/>
+   <depend name="include/flixel/group/FlxTypedGroup.h"/>
+   <depend name="include/flixel/interfaces/IFlxDestroyable.h"/>
+  </file>
+  <file name="src/flixel/effects/particles/FlxTypedEmitter.cpp">
+   <depend name="include/Std.h"/>
+   <depend name="include/Type.h"/>
+   <depend name="include/flixel/FlxBasic.h"/>
+   <depend name="include/flixel/FlxG.h"/>
+   <depend name="include/flixel/FlxObject.h"/>
+   <depend name="include/flixel/FlxSprite.h"/>
+   <depend name="include/flixel/animation/FlxAnimationController.h"/>
+   <depend name="include/flixel/effects/particles/Bounds.h"/>
+   <depend name="include/flixel/effects/particles/FlxParticle.h"/>
+   <depend name="include/flixel/effects/particles/FlxTypedEmitter.h"/>
+   <depend name="include/flixel/group/FlxTypedGroup.h"/>
+   <depend name="include/flixel/interfaces/IFlxBasic.h"/>
+   <depend name="include/flixel/interfaces/IFlxDestroyable.h"/>
+   <depend name="include/flixel/interfaces/IFlxParticle.h"/>
+   <depend name="include/flixel/interfaces/IFlxPooled.h"/>
+   <depend name="include/flixel/interfaces/IFlxSprite.h"/>
+   <depend name="include/flixel/util/FlxDestroyUtil.h"/>
+   <depend name="include/flixel/util/FlxPoint.h"/>
+   <depend name="include/flixel/util/FlxPool_flixel_util_FlxPoint.h"/>
+   <depend name="include/flixel/util/FlxRandom.h"/>
+   <depend name="include/openfl/_v2/display/BlendMode.h"/>
+  </file>
   <file name="src/flixel/effects/FlxFlicker.cpp">
    <depend name="include/IMap.h"/>
    <depend name="include/Std.h"/>
@@ -3679,6 +3712,46 @@
    <depend name="include/Std.h"/>
    <depend name="include/StringBuf.h"/>
   </file>
+  <file name="src/SnowParticle.cpp">
+   <depend name="include/SnowParticle.h"/>
+   <depend name="include/flixel/FlxBasic.h"/>
+   <depend name="include/flixel/FlxObject.h"/>
+   <depend name="include/flixel/FlxSprite.h"/>
+   <depend name="include/flixel/effects/particles/FlxParticle.h"/>
+   <depend name="include/flixel/interfaces/IFlxBasic.h"/>
+   <depend name="include/flixel/interfaces/IFlxDestroyable.h"/>
+   <depend name="include/flixel/interfaces/IFlxParticle.h"/>
+   <depend name="include/flixel/interfaces/IFlxSprite.h"/>
+  </file>
+  <file name="src/flixel/effects/particles/FlxParticle.cpp">
+   <depend name="include/Std.h"/>
+   <depend name="include/flixel/FlxBasic.h"/>
+   <depend name="include/flixel/FlxG.h"/>
+   <depend name="include/flixel/FlxObject.h"/>
+   <depend name="include/flixel/FlxSprite.h"/>
+   <depend name="include/flixel/effects/particles/FlxParticle.h"/>
+   <depend name="include/flixel/interfaces/IFlxBasic.h"/>
+   <depend name="include/flixel/interfaces/IFlxDestroyable.h"/>
+   <depend name="include/flixel/interfaces/IFlxParticle.h"/>
+   <depend name="include/flixel/interfaces/IFlxPooled.h"/>
+   <depend name="include/flixel/interfaces/IFlxSprite.h"/>
+   <depend name="include/flixel/util/FlxPoint.h"/>
+  </file>
+  <file name="src/flixel/interfaces/IFlxParticle.cpp">
+   <depend name="include/flixel/interfaces/IFlxBasic.h"/>
+   <depend name="include/flixel/interfaces/IFlxParticle.h"/>
+   <depend name="include/flixel/interfaces/IFlxSprite.h"/>
+  </file>
+  <file name="src/flixel/interfaces/IFlxSprite.cpp">
+   <depend name="include/flixel/interfaces/IFlxBasic.h"/>
+   <depend name="include/flixel/interfaces/IFlxDestroyable.h"/>
+   <depend name="include/flixel/interfaces/IFlxPooled.h"/>
+   <depend name="include/flixel/interfaces/IFlxSprite.h"/>
+   <depend name="include/flixel/util/FlxPoint.h"/>
+  </file>
+  <file name="src/flixel/interfaces/IFlxBasic.cpp">
+   <depend name="include/flixel/interfaces/IFlxBasic.h"/>
+  </file>
   <file name="src/Reflect.cpp">
    <depend name="include/Reflect.h"/>
   </file>
@@ -3686,6 +3759,7 @@
    <depend name="include/GameOver.h"/>
    <depend name="include/Icicles.h"/>
    <depend name="include/PlayState.h"/>
+   <depend name="include/SnowParticle.h"/>
    <depend name="include/flixel/FlxBasic.h"/>
    <depend name="include/flixel/FlxG.h"/>
    <depend name="include/flixel/FlxGame.h"/>
@@ -3693,6 +3767,9 @@
    <depend name="include/flixel/FlxSprite.h"/>
    <depend name="include/flixel/FlxState.h"/>
    <depend name="include/flixel/addons/display/FlxBackdrop.h"/>
+   <depend name="include/flixel/effects/particles/FlxEmitter.h"/>
+   <depend name="include/flixel/effects/particles/FlxParticle.h"/>
+   <depend name="include/flixel/effects/particles/FlxTypedEmitter.h"/>
    <depend name="include/flixel/group/FlxGroup.h"/>
    <depend name="include/flixel/group/FlxSpriteGroup.h"/>
    <depend name="include/flixel/group/FlxTypedGroup.h"/>
@@ -3701,9 +3778,14 @@
    <depend name="include/flixel/input/keyboard/FlxKeyboard.h"/>
    <depend name="include/flixel/input/mouse/FlxMouse.h"/>
    <depend name="include/flixel/input/mouse/FlxMouseButton.h"/>
+   <depend name="include/flixel/interfaces/IFlxBasic.h"/>
    <depend name="include/flixel/interfaces/IFlxDestroyable.h"/>
    <depend name="include/flixel/interfaces/IFlxInput.h"/>
+   <depend name="include/flixel/interfaces/IFlxParticle.h"/>
    <depend name="include/flixel/interfaces/IFlxPooled.h"/>
+   <depend name="include/flixel/interfaces/IFlxSprite.h"/>
+   <depend name="include/flixel/system/FlxSound.h"/>
+   <depend name="include/flixel/system/frontEnds/SoundFrontEnd.h"/>
    <depend name="include/flixel/text/FlxText.h"/>
    <depend name="include/flixel/util/FlxPoint.h"/>
    <depend name="include/openfl/_v2/display/DisplayObject.h"/>
@@ -3717,6 +3799,7 @@
   <file name="src/MenuState.cpp">
    <depend name="include/MenuState.h"/>
    <depend name="include/PlayState.h"/>
+   <depend name="include/SnowParticle.h"/>
    <depend name="include/flixel/FlxBasic.h"/>
    <depend name="include/flixel/FlxG.h"/>
    <depend name="include/flixel/FlxGame.h"/>
@@ -3724,13 +3807,19 @@
    <depend name="include/flixel/FlxSprite.h"/>
    <depend name="include/flixel/FlxState.h"/>
    <depend name="include/flixel/addons/display/FlxBackdrop.h"/>
+   <depend name="include/flixel/effects/particles/FlxEmitter.h"/>
+   <depend name="include/flixel/effects/particles/FlxParticle.h"/>
+   <depend name="include/flixel/effects/particles/FlxTypedEmitter.h"/>
    <depend name="include/flixel/group/FlxGroup.h"/>
    <depend name="include/flixel/group/FlxTypedGroup.h"/>
    <depend name="include/flixel/input/mouse/FlxMouse.h"/>
    <depend name="include/flixel/input/mouse/FlxMouseButton.h"/>
+   <depend name="include/flixel/interfaces/IFlxBasic.h"/>
    <depend name="include/flixel/interfaces/IFlxDestroyable.h"/>
    <depend name="include/flixel/interfaces/IFlxInput.h"/>
+   <depend name="include/flixel/interfaces/IFlxParticle.h"/>
    <depend name="include/flixel/interfaces/IFlxPooled.h"/>
+   <depend name="include/flixel/interfaces/IFlxSprite.h"/>
    <depend name="include/flixel/text/FlxText.h"/>
    <depend name="include/flixel/util/FlxPoint.h"/>
    <depend name="include/openfl/_v2/display/DisplayObject.h"/>
@@ -3895,6 +3984,7 @@
   <file name="src/GameOver.cpp">
    <depend name="include/GameOver.h"/>
    <depend name="include/PlayState.h"/>
+   <depend name="include/SnowParticle.h"/>
    <depend name="include/flixel/FlxBasic.h"/>
    <depend name="include/flixel/FlxG.h"/>
    <depend name="include/flixel/FlxGame.h"/>
@@ -3902,13 +3992,19 @@
    <depend name="include/flixel/FlxSprite.h"/>
    <depend name="include/flixel/FlxState.h"/>
    <depend name="include/flixel/addons/display/FlxBackdrop.h"/>
+   <depend name="include/flixel/effects/particles/FlxEmitter.h"/>
+   <depend name="include/flixel/effects/particles/FlxParticle.h"/>
+   <depend name="include/flixel/effects/particles/FlxTypedEmitter.h"/>
    <depend name="include/flixel/group/FlxGroup.h"/>
    <depend name="include/flixel/group/FlxTypedGroup.h"/>
    <depend name="include/flixel/input/mouse/FlxMouse.h"/>
    <depend name="include/flixel/input/mouse/FlxMouseButton.h"/>
+   <depend name="include/flixel/interfaces/IFlxBasic.h"/>
    <depend name="include/flixel/interfaces/IFlxDestroyable.h"/>
    <depend name="include/flixel/interfaces/IFlxInput.h"/>
+   <depend name="include/flixel/interfaces/IFlxParticle.h"/>
    <depend name="include/flixel/interfaces/IFlxPooled.h"/>
+   <depend name="include/flixel/interfaces/IFlxSprite.h"/>
    <depend name="include/flixel/text/FlxText.h"/>
    <depend name="include/flixel/util/FlxPoint.h"/>
    <depend name="include/openfl/_v2/display/DisplayObject.h"/>

@@ -30,6 +30,10 @@ C:\Users\epearson\Documents\GitHub\snowflake-drift\export\android\bin\assets\ass
 C:\Users\epearson\Documents\GitHub\snowflake-drift\export\android\bin\assets\assets\images\visitor1.ttf \
 C:\Users\epearson\Documents\GitHub\snowflake-drift\export\android\bin\assets\assets\music\music-goes-here.txt \
 C:\Users\epearson\Documents\GitHub\snowflake-drift\export\android\bin\assets\assets\sounds\beep.ogg \
+C:\Users\epearson\Documents\GitHub\snowflake-drift\export\android\bin\assets\assets\sounds\crashsound.mp3 \
+C:\Users\epearson\Documents\GitHub\snowflake-drift\export\android\bin\assets\assets\sounds\crashsound.wav \
 C:\Users\epearson\Documents\GitHub\snowflake-drift\export\android\bin\assets\assets\sounds\flixel.ogg \
+C:\Users\epearson\Documents\GitHub\snowflake-drift\export\android\bin\assets\assets\sounds\floatsound.mp3 \
+C:\Users\epearson\Documents\GitHub\snowflake-drift\export\android\bin\assets\assets\sounds\floatsound.wav \
 C:\Users\epearson\Documents\GitHub\snowflake-drift\export\android\bin\assets\assets\sounds\sounds-go-here.txt \
 C:\Users\epearson\Documents\GitHub\snowflake-drift\export\android\bin\bin\AndroidManifest.xml \

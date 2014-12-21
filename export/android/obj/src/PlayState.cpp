@@ -9,6 +9,9 @@
 #ifndef INCLUDED_PlayState
 #include <PlayState.h>
 #endif
+#ifndef INCLUDED_SnowParticle
+#include <SnowParticle.h>
+#endif
 #ifndef INCLUDED_flixel_FlxBasic
 #include <flixel/FlxBasic.h>
 #endif
@@ -29,6 +32,15 @@
 #endif
 #ifndef INCLUDED_flixel_addons_display_FlxBackdrop
 #include <flixel/addons/display/FlxBackdrop.h>
+#endif
+#ifndef INCLUDED_flixel_effects_particles_FlxEmitter
+#include <flixel/effects/particles/FlxEmitter.h>
+#endif
+#ifndef INCLUDED_flixel_effects_particles_FlxParticle
+#include <flixel/effects/particles/FlxParticle.h>
+#endif
+#ifndef INCLUDED_flixel_effects_particles_FlxTypedEmitter
+#include <flixel/effects/particles/FlxTypedEmitter.h>
 #endif
 #ifndef INCLUDED_flixel_group_FlxGroup
 #include <flixel/group/FlxGroup.h>
@@ -54,14 +66,29 @@
 #ifndef INCLUDED_flixel_input_mouse_FlxMouseButton
 #include <flixel/input/mouse/FlxMouseButton.h>
 #endif
+#ifndef INCLUDED_flixel_interfaces_IFlxBasic
+#include <flixel/interfaces/IFlxBasic.h>
+#endif
 #ifndef INCLUDED_flixel_interfaces_IFlxDestroyable
 #include <flixel/interfaces/IFlxDestroyable.h>
 #endif
 #ifndef INCLUDED_flixel_interfaces_IFlxInput
 #include <flixel/interfaces/IFlxInput.h>
 #endif
+#ifndef INCLUDED_flixel_interfaces_IFlxParticle
+#include <flixel/interfaces/IFlxParticle.h>
+#endif
 #ifndef INCLUDED_flixel_interfaces_IFlxPooled
 #include <flixel/interfaces/IFlxPooled.h>
+#endif
+#ifndef INCLUDED_flixel_interfaces_IFlxSprite
+#include <flixel/interfaces/IFlxSprite.h>
+#endif
+#ifndef INCLUDED_flixel_system_FlxSound
+#include <flixel/system/FlxSound.h>
+#endif
+#ifndef INCLUDED_flixel_system_frontEnds_SoundFrontEnd
+#include <flixel/system/frontEnds/SoundFrontEnd.h>
 #endif
 #ifndef INCLUDED_flixel_text_FlxText
 #include <flixel/text/FlxText.h>
@@ -96,11 +123,13 @@
 
 Void PlayState_obj::__construct(Dynamic MaxSize)
 {
-HX_STACK_FRAME("PlayState","new",0xf8bf96cf,"PlayState.new","PlayState.hx",18,0xb30d7781)
+HX_STACK_FRAME("PlayState","new",0xf8bf96cf,"PlayState.new","PlayState.hx",19,0xb30d7781)
 
 HX_STACK_ARG(MaxSize,"MaxSize")
 {
-	HX_STACK_LINE(18)
+	HX_STACK_LINE(34)
+	this->particles_count = (int)200;
+	HX_STACK_LINE(19)
 	super::__construct(MaxSize);
 }
 ;
@@ -122,65 +151,95 @@ Dynamic PlayState_obj::__Create(hx::DynamicArray inArgs)
 
 Void PlayState_obj::create( ){
 {
-		HX_STACK_FRAME("PlayState","create",0x82220fed,"PlayState.create","PlayState.hx",35,0xb30d7781)
+		HX_STACK_FRAME("PlayState","create",0x82220fed,"PlayState.create","PlayState.hx",39,0xb30d7781)
 		HX_STACK_THIS(this)
-		HX_STACK_LINE(36)
+		HX_STACK_LINE(40)
 		this->super::create();
-		HX_STACK_LINE(43)
+		HX_STACK_LINE(47)
 		this->background = ::flixel::addons::display::FlxBackdrop_obj::__new(HX_CSTRING("assets/images/backgroundhills.png"),(int)0,(int)0,true,false);
-		HX_STACK_LINE(44)
-		this->background->velocity->set_x((int)-15);
-		HX_STACK_LINE(45)
-		this->add(this->background);
 		HX_STACK_LINE(48)
-		this->snowflake = ::flixel::FlxSprite_obj::__new(((Float(::flixel::FlxG_obj::width) / Float((int)2)) - (int)16),((Float(::flixel::FlxG_obj::height) / Float((int)4)) - (int)16),null());
+		this->background->velocity->set_x((int)-15);
 		HX_STACK_LINE(49)
-		this->snowflake->loadGraphic(HX_CSTRING("assets/images/snowflake.png"),null(),null(),null(),null(),null());
-		HX_STACK_LINE(50)
-		this->snowflake->maxVelocity->set_y((int)2000);
-		HX_STACK_LINE(51)
-		this->snowflake->acceleration->set_y((int)400);
+		this->add(this->background);
 		HX_STACK_LINE(52)
-		this->snowflakeRotationSpeed = (int)0;
+		this->snowflake = ::flixel::FlxSprite_obj::__new(((Float(::flixel::FlxG_obj::width) / Float((int)2)) - (int)16),((Float(::flixel::FlxG_obj::height) / Float((int)4)) - (int)16),null());
 		HX_STACK_LINE(53)
-		this->snowflake->set_width((this->snowflake->get_width() - (int)8));
+		this->snowflake->loadGraphic(HX_CSTRING("assets/images/snowflake.png"),null(),null(),null(),null(),null());
 		HX_STACK_LINE(54)
-		this->snowflake->set_height((this->snowflake->get_height() - (int)8));
+		this->snowflake->maxVelocity->set_y((int)2000);
 		HX_STACK_LINE(55)
-		this->snowflake->centerOffsets(null());
+		this->snowflake->acceleration->set_y((int)400);
 		HX_STACK_LINE(56)
-		this->add(this->snowflake);
+		this->snowflakeRotationSpeed = (int)0;
+		HX_STACK_LINE(57)
+		this->snowflake->set_width((this->snowflake->get_width() - (int)8));
+		HX_STACK_LINE(58)
+		this->snowflake->set_height((this->snowflake->get_height() - (int)8));
 		HX_STACK_LINE(59)
-		int rand = ::Math_obj::round((::Math_obj::random() * (int)160));		HX_STACK_VAR(rand,"rand");
+		this->snowflake->centerOffsets(null());
 		HX_STACK_LINE(60)
-		this->icicles = ::Icicles_obj::__new(::flixel::FlxG_obj::width,((int)-80 - rand));
-		HX_STACK_LINE(61)
-		this->add(this->icicles);
+		this->add(this->snowflake);
 		HX_STACK_LINE(63)
-		rand = ::Math_obj::round((::Math_obj::random() * (int)160));
+		int rand = ::Math_obj::round((::Math_obj::random() * (int)160));		HX_STACK_VAR(rand,"rand");
 		HX_STACK_LINE(64)
-		this->icicles2 = ::Icicles_obj::__new(((::flixel::FlxG_obj::width + (Float(::flixel::FlxG_obj::width) / Float((int)2))) + (int)32),((int)-80 - rand));
+		this->icicles = ::Icicles_obj::__new(::flixel::FlxG_obj::width,((int)-80 - rand));
 		HX_STACK_LINE(65)
-		this->add(this->icicles2);
+		this->add(this->icicles);
 		HX_STACK_LINE(67)
-		::flixel::addons::display::FlxBackdrop ground = ::flixel::addons::display::FlxBackdrop_obj::__new(HX_CSTRING("assets/images/ground.png"),(int)0,(int)0,true,false);		HX_STACK_VAR(ground,"ground");
+		rand = ::Math_obj::round((::Math_obj::random() * (int)160));
 		HX_STACK_LINE(68)
-		ground->set_y((::flixel::FlxG_obj::height - (int)32));
+		this->icicles2 = ::Icicles_obj::__new(((::flixel::FlxG_obj::width + (Float(::flixel::FlxG_obj::width) / Float((int)2))) + (int)32),((int)-80 - rand));
 		HX_STACK_LINE(69)
-		ground->velocity->set_x((int)-100);
-		HX_STACK_LINE(70)
-		this->add(ground);
+		this->add(this->icicles2);
+		HX_STACK_LINE(71)
+		::flixel::addons::display::FlxBackdrop ground = ::flixel::addons::display::FlxBackdrop_obj::__new(HX_CSTRING("assets/images/ground.png"),(int)0,(int)0,true,false);		HX_STACK_VAR(ground,"ground");
+		HX_STACK_LINE(72)
+		ground->set_y((::flixel::FlxG_obj::height - (int)32));
 		HX_STACK_LINE(73)
-		this->score = (int)0;
+		ground->velocity->set_x((int)-100);
 		HX_STACK_LINE(74)
-		this->scoreText = ::flixel::text::FlxText_obj::__new((int)8,(int)8,(int)-1,null(),null(),null());
-		HX_STACK_LINE(75)
-		this->scoreText->setFormat(HX_CSTRING("assets/images/visitor1.ttf"),(int)16,(int)-1,HX_CSTRING("center"),null(),null(),null());
-		HX_STACK_LINE(76)
-		this->scoreText->set_text((HX_CSTRING("Score: ") + this->score));
+		this->add(ground);
 		HX_STACK_LINE(77)
-		this->add(this->scoreText);
+		this->score = (int)0;
+		HX_STACK_LINE(78)
+		this->scoreText = ::flixel::text::FlxText_obj::__new((int)8,(int)8,(int)-1,null(),null(),null());
 		HX_STACK_LINE(79)
+		this->scoreText->setFormat(HX_CSTRING("assets/images/visitor1.ttf"),(int)16,(int)-1,HX_CSTRING("center"),null(),null(),null());
+		HX_STACK_LINE(80)
+		this->scoreText->set_text((HX_CSTRING("Score: ") + this->score));
+		HX_STACK_LINE(81)
+		this->add(this->scoreText);
+		HX_STACK_LINE(83)
+		this->snowEmitter = ::flixel::effects::particles::FlxEmitter_obj::__new((int)0,(int)0,null());
+		HX_STACK_LINE(84)
+		this->snowEmitter->setSize(::flixel::FlxG_obj::width,(int)0);
+		HX_STACK_LINE(85)
+		this->add(this->snowEmitter);
+		HX_STACK_LINE(87)
+		this->snowEmitter->setXSpeed((int)-5,(int)5);
+		HX_STACK_LINE(88)
+		this->snowEmitter->setYSpeed((int)60,(int)70);
+		HX_STACK_LINE(89)
+		this->snowEmitter->setRotation((int)0,(int)0);
+		HX_STACK_LINE(91)
+		{
+			HX_STACK_LINE(91)
+			int _g1 = (int)0;		HX_STACK_VAR(_g1,"_g1");
+			HX_STACK_LINE(91)
+			int _g = (this->particles_count * (int)2);		HX_STACK_VAR(_g,"_g");
+			HX_STACK_LINE(91)
+			while(((_g1 < _g))){
+				HX_STACK_LINE(91)
+				int i = (_g1)++;		HX_STACK_VAR(i,"i");
+				HX_STACK_LINE(92)
+				::SnowParticle particle = ::SnowParticle_obj::__new();		HX_STACK_VAR(particle,"particle");
+				HX_STACK_LINE(93)
+				this->snowEmitter->add(particle);
+			}
+		}
+		HX_STACK_LINE(96)
+		this->snowEmitter->start(false,(int)10,.1,null(),null());
+		HX_STACK_LINE(98)
 		this->scoreUpdate = true;
 	}
 return null();
@@ -189,9 +248,9 @@ return null();
 
 Void PlayState_obj::destroy( ){
 {
-		HX_STACK_FRAME("PlayState","destroy",0x6ec756e9,"PlayState.destroy","PlayState.hx",88,0xb30d7781)
+		HX_STACK_FRAME("PlayState","destroy",0x6ec756e9,"PlayState.destroy","PlayState.hx",107,0xb30d7781)
 		HX_STACK_THIS(this)
-		HX_STACK_LINE(88)
+		HX_STACK_LINE(107)
 		this->super::destroy();
 	}
 return null();
@@ -200,54 +259,66 @@ return null();
 
 Void PlayState_obj::update( ){
 {
-		HX_STACK_FRAME("PlayState","update",0x8d182efa,"PlayState.update","PlayState.hx",95,0xb30d7781)
+		HX_STACK_FRAME("PlayState","update",0x8d182efa,"PlayState.update","PlayState.hx",114,0xb30d7781)
 		HX_STACK_THIS(this)
-		HX_STACK_LINE(96)
+		HX_STACK_LINE(115)
 		this->super::update();
-		struct _Function_1_1{
-			inline static bool Block( ){
-				HX_STACK_FRAME("*","closure",0x5bdab937,"*.closure","PlayState.hx",97,0xb30d7781)
-				{
-					HX_STACK_LINE(97)
-					::flixel::input::mouse::FlxMouseButton _this = ::flixel::FlxG_obj::mouse->_leftButton;		HX_STACK_VAR(_this,"_this");
-					HX_STACK_LINE(97)
-					return (bool((_this->current == (int)2)) || bool((_this->current == (int)-2)));
+		HX_STACK_LINE(116)
+		if ((this->snowflake->alive)){
+			struct _Function_2_1{
+				inline static bool Block( ){
+					HX_STACK_FRAME("*","closure",0x5bdab937,"*.closure","PlayState.hx",117,0xb30d7781)
+					{
+						HX_STACK_LINE(117)
+						::flixel::input::mouse::FlxMouseButton _this = ::flixel::FlxG_obj::mouse->_leftButton;		HX_STACK_VAR(_this,"_this");
+						HX_STACK_LINE(117)
+						return (bool((_this->current == (int)2)) || bool((_this->current == (int)-2)));
+					}
+					return null();
 				}
-				return null();
+			};
+			HX_STACK_LINE(117)
+			if (((  ((!(::flixel::FlxG_obj::keys->checkStatus((int)32,::flixel::FlxG_obj::keys->justPressed->checkStatus)))) ? bool(_Function_2_1::Block()) : bool(true) ))){
+				HX_STACK_LINE(118)
+				this->snowflake->velocity->set_y((int)-350);
+				HX_STACK_LINE(119)
+				::flixel::FlxG_obj::sound->play(HX_CSTRING("assets/sounds/floatsound.wav"),(int)1,false,true,null());
 			}
-		};
-		HX_STACK_LINE(97)
-		if (((  ((!(::flixel::FlxG_obj::keys->checkStatus((int)32,::flixel::FlxG_obj::keys->justPressed->checkStatus)))) ? bool(_Function_1_1::Block()) : bool(true) ))){
-			HX_STACK_LINE(98)
-			this->snowflake->velocity->set_y((int)-350);
+			HX_STACK_LINE(121)
+			if (((  (((this->icicles->x < this->snowflake->x))) ? bool(this->icicles->canAddScore()) : bool(false) ))){
+				HX_STACK_LINE(122)
+				hx::AddEq(this->score,(int)1);
+				HX_STACK_LINE(123)
+				this->scoreText->set_text((HX_CSTRING("Score: ") + this->score));
+			}
+			HX_STACK_LINE(125)
+			if (((  (((this->icicles2->x < this->snowflake->x))) ? bool(this->icicles2->canAddScore()) : bool(false) ))){
+				HX_STACK_LINE(126)
+				hx::AddEq(this->score,(int)1);
+				HX_STACK_LINE(127)
+				this->scoreText->set_text((HX_CSTRING("Score: ") + this->score));
+			}
+			HX_STACK_LINE(129)
+			if (((  ((!(((  ((!(((bool((this->snowflake->y > (::flixel::FlxG_obj::height - (int)32))) || bool((this->snowflake->y < (int)-32))))))) ? bool(::flixel::FlxG_obj::overlap(this->snowflake,this->icicles,null(),null())) : bool(true) ))))) ? bool(::flixel::FlxG_obj::overlap(this->snowflake,this->icicles2,null(),null())) : bool(true) ))){
+				HX_STACK_LINE(130)
+				::flixel::FlxG_obj::sound->play(HX_CSTRING("assets/sounds/crashsound.wav"),(int)1,false,true,null());
+				HX_STACK_LINE(131)
+				this->snowflake->set_alive(false);
+			}
+			HX_STACK_LINE(133)
+			this->snowflakeRotationSpeed = (Float(this->snowflake->velocity->y) / Float((int)50));
+			HX_STACK_LINE(134)
+			{
+				HX_STACK_LINE(134)
+				::flixel::FlxSprite _g = this->snowflake;		HX_STACK_VAR(_g,"_g");
+				HX_STACK_LINE(134)
+				_g->set_angle((_g->angle + this->snowflakeRotationSpeed));
+			}
 		}
-		HX_STACK_LINE(100)
-		if (((  (((this->icicles->x < this->snowflake->x))) ? bool(this->icicles->canAddScore()) : bool(false) ))){
-			HX_STACK_LINE(101)
-			hx::AddEq(this->score,(int)1);
-			HX_STACK_LINE(102)
-			this->scoreText->set_text((HX_CSTRING("Score: ") + this->score));
-		}
-		HX_STACK_LINE(104)
-		if (((  (((this->icicles2->x < this->snowflake->x))) ? bool(this->icicles2->canAddScore()) : bool(false) ))){
-			HX_STACK_LINE(105)
-			hx::AddEq(this->score,(int)1);
-			HX_STACK_LINE(106)
-			this->scoreText->set_text((HX_CSTRING("Score: ") + this->score));
-		}
-		HX_STACK_LINE(108)
-		if (((  ((!(((  ((!(((bool((this->snowflake->y > (::flixel::FlxG_obj::height - (int)32))) || bool((this->snowflake->y < (int)-32))))))) ? bool(::flixel::FlxG_obj::overlap(this->snowflake,this->icicles,null(),null())) : bool(true) ))))) ? bool(::flixel::FlxG_obj::overlap(this->snowflake,this->icicles2,null(),null())) : bool(true) ))){
-			HX_STACK_LINE(109)
+		HX_STACK_LINE(136)
+		if (((this->snowflake->y > (::flixel::FlxG_obj::height * 1.3333333333333333)))){
+			HX_STACK_LINE(137)
 			this->gameOver(null(),null());
-		}
-		HX_STACK_LINE(111)
-		this->snowflakeRotationSpeed = (Float(this->snowflake->velocity->y) / Float((int)50));
-		HX_STACK_LINE(112)
-		{
-			HX_STACK_LINE(112)
-			::flixel::FlxSprite _g = this->snowflake;		HX_STACK_VAR(_g,"_g");
-			HX_STACK_LINE(112)
-			_g->set_angle((_g->angle + this->snowflakeRotationSpeed));
 		}
 	}
 return null();
@@ -256,13 +327,13 @@ return null();
 
 Void PlayState_obj::gameOver( ::flixel::FlxSprite S,::flixel::FlxSprite I){
 {
-		HX_STACK_FRAME("PlayState","gameOver",0x64a21997,"PlayState.gameOver","PlayState.hx",116,0xb30d7781)
+		HX_STACK_FRAME("PlayState","gameOver",0x64a21997,"PlayState.gameOver","PlayState.hx",142,0xb30d7781)
 		HX_STACK_THIS(this)
 		HX_STACK_ARG(S,"S")
 		HX_STACK_ARG(I,"I")
-		HX_STACK_LINE(116)
+		HX_STACK_LINE(142)
 		::flixel::FlxState State = ::GameOver_obj::__new(this->score);		HX_STACK_VAR(State,"State");
-		HX_STACK_LINE(116)
+		HX_STACK_LINE(142)
 		::flixel::FlxG_obj::game->_requestedState = State;
 	}
 return null();
@@ -287,6 +358,8 @@ void PlayState_obj::__Mark(HX_MARK_PARAMS)
 	HX_MARK_MEMBER_NAME(score,"score");
 	HX_MARK_MEMBER_NAME(scoreText,"scoreText");
 	HX_MARK_MEMBER_NAME(scoreUpdate,"scoreUpdate");
+	HX_MARK_MEMBER_NAME(snowEmitter,"snowEmitter");
+	HX_MARK_MEMBER_NAME(particles_count,"particles_count");
 	::flixel::FlxState_obj::__Mark(HX_MARK_ARG);
 	HX_MARK_END_CLASS();
 }
@@ -301,6 +374,8 @@ void PlayState_obj::__Visit(HX_VISIT_PARAMS)
 	HX_VISIT_MEMBER_NAME(score,"score");
 	HX_VISIT_MEMBER_NAME(scoreText,"scoreText");
 	HX_VISIT_MEMBER_NAME(scoreUpdate,"scoreUpdate");
+	HX_VISIT_MEMBER_NAME(snowEmitter,"snowEmitter");
+	HX_VISIT_MEMBER_NAME(particles_count,"particles_count");
 	::flixel::FlxState_obj::__Visit(HX_VISIT_ARG);
 }
 
@@ -331,6 +406,10 @@ Dynamic PlayState_obj::__Field(const ::String &inName,bool inCallProp)
 		break;
 	case 11:
 		if (HX_FIELD_EQ(inName,"scoreUpdate") ) { return scoreUpdate; }
+		if (HX_FIELD_EQ(inName,"snowEmitter") ) { return snowEmitter; }
+		break;
+	case 15:
+		if (HX_FIELD_EQ(inName,"particles_count") ) { return particles_count; }
 		break;
 	case 22:
 		if (HX_FIELD_EQ(inName,"snowflakeRotationSpeed") ) { return snowflakeRotationSpeed; }
@@ -359,6 +438,10 @@ Dynamic PlayState_obj::__SetField(const ::String &inName,const Dynamic &inValue,
 		break;
 	case 11:
 		if (HX_FIELD_EQ(inName,"scoreUpdate") ) { scoreUpdate=inValue.Cast< bool >(); return inValue; }
+		if (HX_FIELD_EQ(inName,"snowEmitter") ) { snowEmitter=inValue.Cast< ::flixel::effects::particles::FlxEmitter >(); return inValue; }
+		break;
+	case 15:
+		if (HX_FIELD_EQ(inName,"particles_count") ) { particles_count=inValue.Cast< int >(); return inValue; }
 		break;
 	case 22:
 		if (HX_FIELD_EQ(inName,"snowflakeRotationSpeed") ) { snowflakeRotationSpeed=inValue.Cast< Float >(); return inValue; }
@@ -376,6 +459,8 @@ void PlayState_obj::__GetFields(Array< ::String> &outFields)
 	outFields->push(HX_CSTRING("score"));
 	outFields->push(HX_CSTRING("scoreText"));
 	outFields->push(HX_CSTRING("scoreUpdate"));
+	outFields->push(HX_CSTRING("snowEmitter"));
+	outFields->push(HX_CSTRING("particles_count"));
 	super::__GetFields(outFields);
 };
 
@@ -392,6 +477,8 @@ static hx::StorageInfo sMemberStorageInfo[] = {
 	{hx::fsInt,(int)offsetof(PlayState_obj,score),HX_CSTRING("score")},
 	{hx::fsObject /*::flixel::text::FlxText*/ ,(int)offsetof(PlayState_obj,scoreText),HX_CSTRING("scoreText")},
 	{hx::fsBool,(int)offsetof(PlayState_obj,scoreUpdate),HX_CSTRING("scoreUpdate")},
+	{hx::fsObject /*::flixel::effects::particles::FlxEmitter*/ ,(int)offsetof(PlayState_obj,snowEmitter),HX_CSTRING("snowEmitter")},
+	{hx::fsInt,(int)offsetof(PlayState_obj,particles_count),HX_CSTRING("particles_count")},
 	{ hx::fsUnknown, 0, null()}
 };
 #endif
@@ -405,6 +492,8 @@ static ::String sMemberFields[] = {
 	HX_CSTRING("score"),
 	HX_CSTRING("scoreText"),
 	HX_CSTRING("scoreUpdate"),
+	HX_CSTRING("snowEmitter"),
+	HX_CSTRING("particles_count"),
 	HX_CSTRING("create"),
 	HX_CSTRING("destroy"),
 	HX_CSTRING("update"),

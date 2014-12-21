@@ -43,6 +43,10 @@ class HXCPP_CLASS_ATTRIBUTES  AssetPaths_obj : public hx::Object{
 		static ::String Thumbs__db;
 		static ::String visitor1__ttf;
 		static ::String music_goes_here__txt;
+		static ::String crashsound__mp3;
+		static ::String crashsound__wav;
+		static ::String floatsound__mp3;
+		static ::String floatsound__wav;
 		static ::String sounds_go_here__txt;
 };
 

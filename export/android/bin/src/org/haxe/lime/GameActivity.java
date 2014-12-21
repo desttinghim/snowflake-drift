@@ -286,7 +286,11 @@ public class GameActivity extends Activity implements SensorEventListener {
 	
 	public static int getResourceID (String inFilename) {
 		
+		//if (inFilename.equals("assets/sounds/crashsound.mp3")) return com.example.myapp.R.raw.assets_sounds_crashsound_mp3;
+		//if (inFilename.equals("assets/sounds/floatsound.mp3")) return com.example.myapp.R.raw.assets_sounds_floatsound_mp3;
 		//
+		//if (inFilename.equals("assets/sounds/crashsound.wav")) return com.example.myapp.R.raw.assets_sounds_crashsound_wav;
+		//if (inFilename.equals("assets/sounds/floatsound.wav")) return com.example.myapp.R.raw.assets_sounds_floatsound_wav;
 		//if (inFilename.equals("assets/sounds/beep.ogg")) return com.example.myapp.R.raw.assets_sounds_beep_ogg;
 		//if (inFilename.equals("assets/sounds/flixel.ogg")) return com.example.myapp.R.raw.assets_sounds_flixel_ogg;
 		//

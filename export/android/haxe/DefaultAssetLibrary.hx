@@ -74,6 +74,14 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("assets/images/visitor1.ttf", AssetType.FONT);
 		path.set ("assets/music/music-goes-here.txt", "assets/music/music-goes-here.txt");
 		type.set ("assets/music/music-goes-here.txt", AssetType.TEXT);
+		path.set ("assets/sounds/crashsound.mp3", "assets/sounds/crashsound.mp3");
+		type.set ("assets/sounds/crashsound.mp3", AssetType.MUSIC);
+		path.set ("assets/sounds/crashsound.wav", "assets/sounds/crashsound.wav");
+		type.set ("assets/sounds/crashsound.wav", AssetType.SOUND);
+		path.set ("assets/sounds/floatsound.mp3", "assets/sounds/floatsound.mp3");
+		type.set ("assets/sounds/floatsound.mp3", AssetType.MUSIC);
+		path.set ("assets/sounds/floatsound.wav", "assets/sounds/floatsound.wav");
+		type.set ("assets/sounds/floatsound.wav", AssetType.SOUND);
 		path.set ("assets/sounds/sounds-go-here.txt", "assets/sounds/sounds-go-here.txt");
 		type.set ("assets/sounds/sounds-go-here.txt", AssetType.TEXT);
 		path.set ("assets/sounds/beep.ogg", "assets/sounds/beep.ogg");
@@ -127,6 +135,18 @@ class DefaultAssetLibrary extends AssetLibrary {
 		id = "assets/music/music-goes-here.txt";
 		path.set (id, id);
 		type.set (id, AssetType.TEXT);
+		id = "assets/sounds/crashsound.mp3";
+		path.set (id, id);
+		type.set (id, AssetType.MUSIC);
+		id = "assets/sounds/crashsound.wav";
+		path.set (id, id);
+		type.set (id, AssetType.SOUND);
+		id = "assets/sounds/floatsound.mp3";
+		path.set (id, id);
+		type.set (id, AssetType.MUSIC);
+		id = "assets/sounds/floatsound.wav";
+		path.set (id, id);
+		type.set (id, AssetType.SOUND);
 		id = "assets/sounds/sounds-go-here.txt";
 		path.set (id, id);
 		type.set (id, AssetType.TEXT);
@@ -160,9 +180,17 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
+		
+		
+		
 		#if (windows || mac || linux)
 		
 		var useManifest = false;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
@@ -816,6 +844,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 
+
+
+
+
 #elseif html5
 
 
@@ -831,6 +863,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 @:keep #if display private #end class __ASSET__assets_images_visitor1_ttf extends flash.text.Font { #if (!openfl_html5_dom) public function new () { super (); fontName = "assets/images/visitor1.ttf"; } #end }
+
+
+
+
 
 
 

@@ -282,6 +282,9 @@
 #include <flixel/input/FlxSwipe.h>
 #include <flixel/input/FlxAccelerometer.h>
 #include <flixel/group/FlxTypedGroupIterator.h>
+#include <flixel/effects/particles/Bounds.h>
+#include <flixel/effects/particles/FlxEmitter.h>
+#include <flixel/effects/particles/FlxTypedEmitter.h>
 #include <flixel/effects/FlxFlicker.h>
 #include <flixel/util/FlxPool_flixel_effects_FlxFlicker.h>
 #include <flixel/animation/FlxPrerotatedAnimation.h>
@@ -333,6 +336,11 @@
 #include <ValueType.h>
 #include <StringTools.h>
 #include <StringBuf.h>
+#include <SnowParticle.h>
+#include <flixel/effects/particles/FlxParticle.h>
+#include <flixel/interfaces/IFlxParticle.h>
+#include <flixel/interfaces/IFlxSprite.h>
+#include <flixel/interfaces/IFlxBasic.h>
 #include <Reflect.h>
 #include <PlayState.h>
 #include <MenuState.h>
@@ -670,6 +678,9 @@ hx::RegisterResources( hx::GetResources() );
 ::flixel::input::FlxSwipe_obj::__register();
 ::flixel::input::FlxAccelerometer_obj::__register();
 ::flixel::group::FlxTypedGroupIterator_obj::__register();
+::flixel::effects::particles::Bounds_obj::__register();
+::flixel::effects::particles::FlxEmitter_obj::__register();
+::flixel::effects::particles::FlxTypedEmitter_obj::__register();
 ::flixel::effects::FlxFlicker_obj::__register();
 ::flixel::util::FlxPool_flixel_effects_FlxFlicker_obj::__register();
 ::flixel::animation::FlxPrerotatedAnimation_obj::__register();
@@ -721,6 +732,11 @@ hx::RegisterResources( hx::GetResources() );
 ::ValueType_obj::__register();
 ::StringTools_obj::__register();
 ::StringBuf_obj::__register();
+::SnowParticle_obj::__register();
+::flixel::effects::particles::FlxParticle_obj::__register();
+::flixel::interfaces::IFlxParticle_obj::__register();
+::flixel::interfaces::IFlxSprite_obj::__register();
+::flixel::interfaces::IFlxBasic_obj::__register();
 ::Reflect_obj::__register();
 ::PlayState_obj::__register();
 ::MenuState_obj::__register();
@@ -826,6 +842,11 @@ hx::RegisterResources( hx::GetResources() );
 ::MenuState_obj::__boot();
 ::PlayState_obj::__boot();
 ::Reflect_obj::__boot();
+::flixel::interfaces::IFlxBasic_obj::__boot();
+::flixel::interfaces::IFlxSprite_obj::__boot();
+::flixel::interfaces::IFlxParticle_obj::__boot();
+::flixel::effects::particles::FlxParticle_obj::__boot();
+::SnowParticle_obj::__boot();
 ::StringBuf_obj::__boot();
 ::StringTools_obj::__boot();
 ::ValueType_obj::__boot();
@@ -871,6 +892,9 @@ hx::RegisterResources( hx::GetResources() );
 ::flixel::animation::FlxPrerotatedAnimation_obj::__boot();
 ::flixel::util::FlxPool_flixel_effects_FlxFlicker_obj::__boot();
 ::flixel::effects::FlxFlicker_obj::__boot();
+::flixel::effects::particles::FlxTypedEmitter_obj::__boot();
+::flixel::effects::particles::FlxEmitter_obj::__boot();
+::flixel::effects::particles::Bounds_obj::__boot();
 ::flixel::group::FlxTypedGroupIterator_obj::__boot();
 ::flixel::input::FlxAccelerometer_obj::__boot();
 ::flixel::input::FlxSwipe_obj::__boot();

@@ -1,5 +1,6 @@
 package;
 
+import flixel.effects.particles.FlxEmitter;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxState;
@@ -28,6 +29,9 @@ class PlayState extends FlxState
 	private var score:Int;
 	private var scoreText:FlxText;
 	private var scoreUpdate:Bool;
+	
+	private var snowEmitter:FlxEmitter;
+	private var particles_count:Int = 200;
 	/**
 	 * Function that is called up when to state is created to set it up. 
 	 */
@@ -76,6 +80,21 @@ class PlayState extends FlxState
 		scoreText.text = "Score: " + score;
 		add(scoreText);
 	
+		snowEmitter = new FlxEmitter(0, 0);
+		snowEmitter.setSize(FlxG.width, 0);
+		add(snowEmitter);
+		
+		snowEmitter.setXSpeed(-5, 5);
+		snowEmitter.setYSpeed(60, 70);
+		snowEmitter.setRotation(0, 0);
+		
+		for (i in 0 ... particles_count * 2) {
+			var particle:SnowParticle = new SnowParticle();
+			snowEmitter.add(particle);
+		}
+		
+		snowEmitter.start(false, 10, .1);
+		
 		scoreUpdate = true;
 	}
 	
@@ -94,22 +113,29 @@ class PlayState extends FlxState
 	override public function update():Void
 	{
 		super.update();
-		if (FlxG.keys.justPressed.SPACE || FlxG.mouse.justPressed) {
-			snowflake.velocity.y = -350;
+		if(snowflake.alive) {
+			if (FlxG.keys.justPressed.SPACE || FlxG.mouse.justPressed) {
+				snowflake.velocity.y = -350;
+				FlxG.sound.play(AssetPaths.floatsound__wav, 1, false, true);
+			}
+			if (icicles.x < snowflake.x && icicles.canAddScore()) {
+				score+=1;
+				scoreText.text = "Score: " + score;
+			}
+			if (icicles2.x < snowflake.x && icicles2.canAddScore()) {
+				score+=1;
+				scoreText.text = "Score: " + score;
+			}
+			if (snowflake.y > FlxG.height-32 || snowflake.y < -32 || FlxG.overlap(snowflake,icicles) || FlxG.overlap(snowflake,icicles2)) {
+				FlxG.sound.play(AssetPaths.crashsound__wav, 1, false, true);
+				snowflake.alive = false;
+			}
+			snowflakeRotationSpeed = snowflake.velocity.y / 50;
+			snowflake.angle += snowflakeRotationSpeed;
 		}
-		if (icicles.x < snowflake.x && icicles.canAddScore()) {
-			score+=1;
-			scoreText.text = "Score: " + score;
-		}
-		if (icicles2.x < snowflake.x && icicles2.canAddScore()) {
-			score+=1;
-			scoreText.text = "Score: " + score;
-		}
-		if (snowflake.y > FlxG.height-32 || snowflake.y < -32 || FlxG.overlap(snowflake,icicles) || FlxG.overlap(snowflake,icicles2)) {
+		if (snowflake.y > FlxG.height * (4 / 3)) {
 			gameOver();
 		}
-		snowflakeRotationSpeed = snowflake.velocity.y / 50;
-		snowflake.angle += snowflakeRotationSpeed;
 	}
 	
 	private function gameOver(? S:FlxSprite, ? I:FlxSprite):Void {
