@@ -1,0 +1,52 @@
+{
+     "type" : 1
+    ,"target" : null
+    ,"name" : "\\snowflake-drift"
+    ,"main" : null
+    ,"projectPackage" : null
+    ,"company" : null
+    ,"license" : null
+    ,"url" : null
+    ,"targetData" : [
+
+    ]
+    ,"files" : [
+         {
+             "path" : "Project.xml"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 16
+        }
+        ,{
+             "path" : "source\\PlayState.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 135
+        }
+        ,{
+             "path" : "source\\GameOver.hx"
+            ,"useTabs" : true
+            ,"indentSize" : 4
+            ,"foldedRegions" : [
+
+            ]
+            ,"activeLine" : 92
+        }
+    ]
+    ,"activeFile" : "source\\PlayState.hx"
+    ,"openFLTarget" : "neko"
+    ,"openFLBuildMode" : "Debug"
+    ,"runActionType" : 2
+    ,"runActionText" : "haxelib run lime run \"%path%\" neko"
+    ,"buildActionCommand" : "haxelib run lime build \"%path%\" neko -debug --connect 5000"
+    ,"hiddenItems" : [
+
+    ]
+    ,"showHiddenItems" : false
+}

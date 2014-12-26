@@ -19,6 +19,7 @@ import flixel.addons.display.FlxBackdrop;
 class PlayState extends FlxState
 {
 	private var background:FlxBackdrop;
+	private var ground:FlxBackdrop;
 	
 	private var snowflake:FlxSprite;
 	private var snowflakeRotationSpeed:Float;
@@ -68,7 +69,7 @@ class PlayState extends FlxState
 		icicles2 = new Icicles(FlxG.width + FlxG.width / 2 + 32, -80 - rand);
 		add(icicles2);
 		
-		var ground = new FlxBackdrop(AssetPaths.ground__png, 0, 0, true, false);
+		ground = new FlxBackdrop(AssetPaths.ground__png, 0, 0, true, false);
 		ground.y = FlxG.height - 32;
 		ground.velocity.x = -100;
 		add(ground);
@@ -116,7 +117,7 @@ class PlayState extends FlxState
 		if(snowflake.alive) {
 			if (FlxG.keys.justPressed.SPACE || FlxG.mouse.justPressed) {
 				snowflake.velocity.y = -350;
-				FlxG.sound.play(AssetPaths.floatsound__wav, 1, false, true);
+				//FlxG.sound.play(AssetPaths.floatsound__wav, 1, false, true);
 			}
 			if (icicles.x < snowflake.x && icicles.canAddScore()) {
 				score+=1;
@@ -128,6 +129,11 @@ class PlayState extends FlxState
 			}
 			if (snowflake.y > FlxG.height-32 || snowflake.y < -32 || FlxG.overlap(snowflake,icicles) || FlxG.overlap(snowflake,icicles2)) {
 				FlxG.sound.play(AssetPaths.crashsound__wav, 1, false, true);
+				FlxG.camera.shake(0.01);
+				icicles.velocity.x = 0;
+				icicles2.velocity.x = 0;
+				background.velocity.x = 0;
+				ground.velocity.x = 0;
 				snowflake.alive = false;
 			}
 			snowflakeRotationSpeed = snowflake.velocity.y / 50;

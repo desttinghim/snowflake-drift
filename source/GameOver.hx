@@ -39,12 +39,12 @@ class GameOver extends FlxState
 		super.create();
 		
 		var background = new FlxBackdrop(AssetPaths.backgroundhills__png, 0.8, 0, true, false);
-		background.velocity.x = -15;
+		//background.velocity.x = -15;
 		add(background);
 		
 		var background2 = new FlxBackdrop(AssetPaths.ground__png, 0.8, 0, true, false);
 		background2.y = FlxG.height - 32;
-		background2.velocity.x = -100;
+		//background2.velocity.x = -100;
 		add(background2);
 		
 		
