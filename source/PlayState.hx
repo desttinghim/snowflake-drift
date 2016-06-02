@@ -1,6 +1,5 @@
 package;
 
-import flixel.effects.particles.FlxEmitter;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxState;
@@ -29,8 +28,6 @@ class PlayState extends FlxState
 	private var scoreText:FlxText;
 	private var scoreUpdate:Bool;
 
-	private var snowEmitter:FlxEmitter;
-	private var particles_count:Int = 200;
 	/**
 	 * Function that is called up when to state is created to set it up.
 	 */
@@ -74,18 +71,7 @@ class PlayState extends FlxState
 		scoreText.text = "Score: " + score;
 		add(scoreText);
 
-		snowEmitter = new FlxEmitter(0, 0);
-		snowEmitter.setSize(FlxG.width, 0);
-		add(snowEmitter);
-
-		snowEmitter.velocity.set(-5, 60, 5, 70);
-
-		for (i in 0 ... particles_count * 2) {
-			var particle:SnowParticle = new SnowParticle();
-			snowEmitter.add(particle);
-		}
-
-		snowEmitter.start(false, .1, 10);
+		add(new SnowEmitter());
 
 		scoreUpdate = true;
 	}
@@ -107,7 +93,7 @@ class PlayState extends FlxState
 		super.update(dt);
 		if(snowflake.alive) {
 			if (FlxG.keys.justPressed.SPACE || FlxG.mouse.justPressed) {
-				snowflake.velocity.y = -350;
+				snowflake.velocity.y = -200;
 				//FlxG.sound.play(AssetPaths.floatsound__wav, 1, false, true);
 			}
 			if (icicles.x < snowflake.x && icicles.canAddScore()) {

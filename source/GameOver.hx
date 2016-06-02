@@ -1,7 +1,6 @@
 package ;
 
 import flixel.addons.display.FlxBackdrop;
-import flixel.effects.particles.FlxEmitter;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxState;
@@ -20,10 +19,6 @@ class GameOver extends FlxState
 	private var gameOverText:FlxText;
 	private var instructText:FlxText;
 	private var score:Int;
-	private var loaded:Int;
-
-	private var snowEmitter:FlxEmitter;
-	private var particles_count:Int = 200;
 	/**
 	 * Function that is called up when to state is created to set it up.
 	 */
@@ -50,27 +45,18 @@ class GameOver extends FlxState
 		gameOverText = new FlxText();
 		gameOverText.setFormat(AssetPaths.visitor1__ttf, 24, FlxColor.WHITE, "center");
 		gameOverText.text = "SCORE: " + score + "\nGAME OVER";
+		gameOverText.x = FlxG.width / 2 - gameOverText.width / 2;
+		gameOverText.y = FlxG.height / 3 - gameOverText.height / 2;
 		add(gameOverText);
 
 		instructText = new FlxText();
 		instructText.setFormat(AssetPaths.visitor1__ttf, 16, FlxColor.WHITE, "center");
 		instructText.text = "TAP TO RESTART";
+		instructText.x = FlxG.width / 2 - instructText.width / 2;
+		instructText.y = FlxG.height / 2 - instructText.height / 2;
 		add(instructText);
 
-		snowEmitter = new FlxEmitter(0, 0);
-		snowEmitter.setSize(FlxG.width, 0);
-		add(snowEmitter);
-
-		snowEmitter.velocity.set(-5, 60, 5, 70);
-
-		for (i in 0 ... particles_count * 2) {
-			var particle:SnowParticle = new SnowParticle();
-			snowEmitter.add(particle);
-		}
-
-		snowEmitter.start(false, .1, 10);
-
-		loaded = 1;
+		add(new SnowEmitter());
 	}
 
 	/**
@@ -87,19 +73,9 @@ class GameOver extends FlxState
 	 */
 	override public function update(dt:Float):Void
 	{
-		if (loaded == 0) {
-			gameOverText.x = FlxG.width / 2 - gameOverText.width / 2;
-			gameOverText.y = FlxG.height / 3 - gameOverText.height / 2;
-
-			instructText.x = FlxG.width / 2 - instructText.width / 2;
-			instructText.y = FlxG.height / 2 - instructText.height / 2;
-		} else if (loaded > 0) {
-			loaded--;
-		}
 		super.update(dt);
 		if (FlxG.mouse.justPressed) {
 			FlxG.switchState(new PlayState());
 		}
 	}
-
 }

@@ -1,7 +1,6 @@
 package;
 
 import flixel.addons.display.FlxBackdrop;
-import flixel.effects.particles.FlxEmitter;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxState;
@@ -14,18 +13,17 @@ import flixel.util.FlxColor;
  */
 class MenuState extends FlxState
 {
-	private var loaded:Int;
 	private var titleText:FlxText;
 	private var instructText:FlxText;
 	private var ackText:FlxText;
-	private var snowEmitter:FlxEmitter;
-	private var particles_count:Int = 200;
+	private var musicAcknowledgementText:FlxText;
 	/**
 	 * Function that is called up when to state is created to set it up.
 	 */
 	override public function create():Void
 	{
 		super.create();
+		FlxG.sound.playMusic(AssetPaths.Visager_08_Winter_Village__ogg, 1, true);
 
 		var background = new FlxBackdrop(AssetPaths.backgroundhills__png, 0.8, 0, true, false);
 		background.velocity.x = -15;
@@ -39,34 +37,32 @@ class MenuState extends FlxState
 		titleText = new FlxText();
 		titleText.setFormat(AssetPaths.visitor1__ttf, 24, FlxColor.WHITE, "center");
 		titleText.text = "SNOWFLAKE DRIFT";
+		titleText.x = FlxG.width / 2 - titleText.width / 2;
+		titleText.y = FlxG.height / 3 - titleText.height / 2;
 		add(titleText);
 
 		instructText = new FlxText();
 		instructText.setFormat(AssetPaths.visitor1__ttf, 16, FlxColor.WHITE, "center");
 		instructText.text = "TAP TO BEGIN";
+		instructText.x = FlxG.width / 2 - instructText.width / 2;
+		instructText.y = FlxG.height / 2 - instructText.height / 2;
 		add(instructText);
 
 		ackText = new FlxText();
-		ackText.setFormat(AssetPaths.visitor1__ttf, 8, FlxColor.WHITE, "center");
+		ackText.setFormat(AssetPaths.visitor1__ttf, 12, FlxColor.WHITE, "center");
 		ackText.text = "Sound effects from SoundBible.com";
+		ackText.x = FlxG.width / 2 - ackText.width / 2;
+		ackText.y = FlxG.height - ackText.height - 48;
 		add(ackText);
 
-		snowEmitter = new FlxEmitter(0, 0);
-		snowEmitter.setSize(FlxG.width, 0);
-		add(snowEmitter);
+		musicAcknowledgementText = new FlxText();
+		musicAcknowledgementText.setFormat(AssetPaths.visitor1__ttf, 12, FlxColor.WHITE, "center");
+		musicAcknowledgementText.text = "Music by Visager on freemusicarchive.org";
+		musicAcknowledgementText.x = FlxG.width / 2 - musicAcknowledgementText.width / 2;
+		musicAcknowledgementText.y = FlxG.height - musicAcknowledgementText.height - 32;
+		add(musicAcknowledgementText);
 
-		snowEmitter.velocity.set(-5, 60, 5, 70);
-
-		for (i in 0 ... particles_count * 2) {
-			var particle:SnowParticle = new SnowParticle();
-			snowEmitter.add(particle);
-		}
-
-		snowEmitter.start(false, .1, 10);
-
-		loaded = 1;
-
-		//FlxG.switchState(new PlayState());
+		add(new SnowEmitter());
 	}
 
 	/**
@@ -83,19 +79,6 @@ class MenuState extends FlxState
 	 */
 	override public function update(dt:Float):Void
 	{
-		if (loaded == 0) {
-			loaded--;
-			titleText.x = FlxG.width / 2 - titleText.width / 2;
-			titleText.y = FlxG.height / 3 - titleText.height / 2;
-
-			instructText.x = FlxG.width / 2 - instructText.width / 2;
-			instructText.y = FlxG.height / 2 - instructText.height / 2;
-
-			ackText.x = FlxG.width / 2 - ackText.width / 2;
-			ackText.y = FlxG.height - ackText.height - 32;
-		} else if(loaded > 0){
-			loaded--;
-		}
 		super.update(dt);
 		if (FlxG.mouse.justReleased) {
 			FlxG.switchState(new PlayState());
